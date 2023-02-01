@@ -1,0 +1,19 @@
+from typing import List
+
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        answer = 0
+        left = 0
+        right = len(height) - 1
+        while left < right:
+            answer = max(answer, (right - left) * min(height[left], height[right]))
+            if height[left] < height[right]:
+                left += 1
+            else:
+                right -= 1
+        return answer
+
+
+sol = Solution()
+print(sol.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))
